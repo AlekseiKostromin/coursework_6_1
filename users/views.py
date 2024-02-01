@@ -14,7 +14,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import View
 from django.views.generic import CreateView, UpdateView, TemplateView, ListView
 from django.urls import reverse_lazy, reverse
-
+from django.core.cache import cache
 from blog.models import Post
 from clients.models import Client
 from config import settings
@@ -150,11 +150,16 @@ class UserUpdateView(UpdateView, LoginRequiredMixin):
     success_url = reverse_lazy('users:profile')
 
     def get_object(self, queryset=None):
-        """ Позволяет делать необязательным передачу pk объекта """
-        if not self.request.user.is_superuser:
-            if self.object.owner != self.request.user or self.request.user.filter(groups__name='manager').exists():
-                raise Http404
+        #""" Позволяет делать необязательным передачу pk объекта но пользователи не могут завести свой профиль """
+        #if not self.request.user.is_superuser:
+        #    if self.object.owner != self.request.user or self.request.user.filter(groups__name='manager').exists():
+        #        raise Http404
         return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Редактирование профиля'
+        return context
 
 
 class UserListView(PermissionRequiredMixin, LoginRequiredMixin, ListView):

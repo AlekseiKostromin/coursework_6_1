@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    #'django.middleware.cache.UpdateCacheMiddleware', #Можно закэшировать весь сайт и  отключить отделтные страницы
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware', #Можно закэшировать весь сайт и  отключить отделтные страницы
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -161,9 +163,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  #  Подтв�
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = EMAIL_HOST_USER
+#DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#SERVER_EMAIL = EMAIL_HOST_USER
+#EMAIL_ADMIN = EMAIL_HOST_USER
 
 CRONJOBS = [
     ('*/5 * * * *', 'distribution.cron.sort_mailing')

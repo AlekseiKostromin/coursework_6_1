@@ -24,14 +24,14 @@
     <nav class="ms-5">
 
         {% if user.is_authenticated %}
-        <a class="p-2 btn btn-outline-primary" href="{% url 'users:main' %}">Главная</a>
+        <a class="p-2 btn btn-outline-warning" href="{% url 'users:main' %}">Главная</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog' %}">Блог</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">Выйти</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Профиль</a>
+        <a class="p-2 btn btn-outline-danger" href="{% url 'users:logout' %}">Выйти</a>
+        <a class="p-2 btn btn-outline-info" href="{% url 'users:profile' %}">Профиль</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'clients:list' %}">Клиенты</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'distribution:list' %}">Рассылки</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'distribution:message_list' %}">Сообщения</a>
-        <a class="p-2 btn btn-outline-primary" href="{% url 'distribution:log_list' %}">Логи</a>
+        <a class="p-2 btn btn-outline-danger" href="{% url 'distribution:log_list' %}">Логи</a>
         {% else %}
         <a class="p-2 btn btn-outline-primary" href="{% url 'users:main' %}">Главная</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog' %}">Блог</a>
@@ -39,7 +39,7 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
         {% endif %}
         {% if user.is_staff %}
-        <a class="p-2 btn btn-outline-primary" href="{% url 'users:user_list' %}">Пользователи</a>
+        <a class="p-2 btn btn-outline-info" href="{% url 'users:user_list' %}">Пользователи</a>
         {% endif %}
 
     </nav>

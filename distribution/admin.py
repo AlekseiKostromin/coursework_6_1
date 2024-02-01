@@ -22,4 +22,3 @@ class LogAdmin(admin.ModelAdmin):
     list_display = ('pk', 'mailing', 'time', 'status', 'server_response', 'owner',)
     list_filter = ('time', 'status', 'owner',)
     search_fields = ('mailing', 'time', 'status', 'owner',)
-
